@@ -76,6 +76,21 @@ function runCommand(command) {
   }
 }
 
+async function checkForUpdates() {
+  try {
+    const response = await axios.get(POMPA_LATEST_VERSION_URL);
+    const latestVersion = response.data.collected.version;
+    if (latestVersion !== POMPA_VERSION) {
+      console.log(
+        "\x1b[32m%s\x1b[0m",
+        `Update available: Pompa ${latestVersion} (current: ${POMPA_VERSION})`
+      );
+    }
+  } catch (error) {
+    // Ignore any errors in the version checking process
+  }
+}
+
 function installPackages(packages, isDev, packageManager) {
   if (packageManager === "yarn") {
     runCommand(`yarn add${isDev ? " --dev" : ""} ${packages}`);
@@ -111,6 +126,8 @@ function remapCommand(command, packageManager) {
 
 function pompa(command) {
   const packageManager = detectPackageManager();
+
+  checkForUpdates();
 
   if (packageManager === "yarn" && command === "install") {
     console.error('Error: "pompa install" command is not supported with Yarn.');
