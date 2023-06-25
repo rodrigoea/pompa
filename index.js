@@ -5,20 +5,21 @@ const fs = require("fs-extra");
 const { execSync } = require("child_process");
 const readline = require("readline");
 
-// ANSI escape sequence for yellow color
-const yellowColor = "\x1b[33m";
-
-// ANSI escape sequence to reset text color
-const resetColor = "\x1b[0m";
+const commandMappings = {
+  add: {
+    yarn: "add",
+    npm: "install",
+  },
+  remove: {
+    yarn: "remove",
+    npm: "uninstall",
+  },
+  // Add more command mappings as needed
+};
 
 function detectPackageManager() {
   const currentDirectory = process.cwd();
   if (fs.existsSync(path.join(currentDirectory, "yarn.lock"))) {
-    if (fs.existsSync(path.join(currentDirectory, "package-lock.json"))) {
-      console.warn(
-        `${yellowColor}Warning: Both yarn.lock and package-lock.json files found. Please remove one of them for consistent behavior.${resetColor}`
-      );
-    }
     return "yarn";
   } else if (fs.existsSync(path.join(currentDirectory, "package-lock.json"))) {
     return "npm";
@@ -64,15 +65,12 @@ function promptPackageManager(callback) {
 }
 
 function suggestCommand(command) {
-  if (command === "add") {
-    console.log(`Did you mean "install"?`);
-  } else if (command === "remove") {
-    console.log(`Did you mean "uninstall"?`);
-  } else if (command === "i") {
-    console.log(`Did you mean "install"?`);
-  } else if (command === "rm") {
-    console.log(`Did you mean "uninstall"?`);
-  }
+  console.log(`Did you mean "${command}"?`);
+}
+
+function remapCommand(command, packageManager) {
+  const mappedCommand = commandMappings[command]?.[packageManager];
+  return mappedCommand || command;
 }
 
 function pompa(command) {
@@ -97,9 +95,11 @@ function pompa(command) {
     }
   } else {
     if (packageManager === "yarn") {
-      runCommand(`yarn ${command}`);
+      const remappedCommand = remapCommand(command, packageManager);
+      runCommand(`yarn ${remappedCommand}`);
     } else if (packageManager === "npm") {
-      runCommand(`npm ${command}`);
+      const remappedCommand = remapCommand(command, packageManager);
+      runCommand(`npm ${remappedCommand}`);
     } else {
       suggestCommand(command);
       process.exit(1);

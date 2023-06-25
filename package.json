@@ -1,6 +1,6 @@
 {
   "name": "pompa",
-  "version": "0.1.17",
+  "version": "0.1.18",
   "description": "Pompa is a utility that detects the package manager being used in a project and executes the appropriate commands accordingly. It simplifies the development workflow by removing the need for manual checks and allows seamless integration with both npm and Yarn.",
   "main": "index.js",
   "scripts": {
