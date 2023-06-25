@@ -124,18 +124,24 @@ function remapCommand(command, packageManager) {
   return mappedCommand || command;
 }
 
-function logThankYouMessage() {
-  const username = os.userInfo().username;
+function logThankYouMessage(username) {
   console.log(`Thank you, ${username}, for installing Pompa!`);
 }
 
 function pompa(command) {
   const packageManager = detectPackageManager();
+  const currentUser = os.userInfo().username;
 
   checkForUpdates();
 
   if (command === "install") {
-    logThankYouMessage();
+    if (currentUser === "root") {
+      // Running with sudo, use "sudo_user" environment variable
+      const sudoUser = process.env.SUDO_USER;
+      logThankYouMessage(sudoUser);
+    } else {
+      logThankYouMessage(currentUser);
+    }
   }
 
   if (packageManager === "yarn" && command === "install") {
