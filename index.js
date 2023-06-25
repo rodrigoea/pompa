@@ -124,10 +124,19 @@ function remapCommand(command, packageManager) {
   return mappedCommand || command;
 }
 
+function logThankYouMessage() {
+  const username = os.userInfo().username;
+  console.log(`Thank you, ${username}, for installing Pompa!`);
+}
+
 function pompa(command) {
   const packageManager = detectPackageManager();
 
   checkForUpdates();
+
+  if (command === "install") {
+    logThankYouMessage();
+  }
 
   if (packageManager === "yarn" && command === "install") {
     console.error('Error: "pompa install" command is not supported with Yarn.');

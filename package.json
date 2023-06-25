@@ -1,11 +1,10 @@
 {
   "name": "pompa",
-  "version": "0.1.24",
+  "version": "0.1.25",
   "description": "Pompa is a utility that detects the package manager being used in a project and executes the appropriate commands accordingly. It simplifies the development workflow by removing the need for manual checks and allows seamless integration with both npm and Yarn.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "node postinstall.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
     "pompa": "./index.js"
