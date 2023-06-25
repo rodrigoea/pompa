@@ -2,6 +2,8 @@
 
 Pompa is here to revolutionize your package management experience! Say goodbye to the hassle of remembering different commands for npm and yarn. With Pompa, you can seamlessly switch between npm and yarn without breaking a sweat. It's the ultimate package manager companion that detects your project's package manager and executes the right commands, making your life as a developer much easier.
 
+![Pompa in action](./Jun-25-2023%2003-01-15.gif)
+
 ## Features
 
 - Automatic detection of npm and yarn

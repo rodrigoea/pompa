@@ -96,7 +96,7 @@ function promptPackageManager(callback) {
       rl.close();
       const packageManager = answer.trim().toLowerCase() || 'npm';
       callback(packageManager);
-    }
+    },
   );
 }
 
