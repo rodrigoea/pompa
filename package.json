@@ -1,0 +1,29 @@
+{
+  "name": "pompa",
+  "version": "0.1.0",
+  "description": "Pompa is a utility that detects the package manager being used in a project and executes the appropriate commands accordingly. It simplifies the development workflow by removing the need for manual checks and allows seamless integration with both npm and Yarn.",
+  "main": "index.js",
+  "scripts": {
+    "pompa": "node index.js"
+  },
+  "bin": {
+    "pompa": "./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rodrigoea/pompa.git"
+  },
+  "keywords": [
+    "package",
+    "manager"
+  ],
+  "author": "Rodrigo Antinarelli",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rodrigoea/pompa/issues"
+  },
+  "homepage": "https://github.com/rodrigoea/pompa#readme",
+  "dependencies": {
+    "fs-extra": "^11.1.1"
+  }
+}
