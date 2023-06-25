@@ -100,4 +100,4 @@ Pompa is released under the [MIT License](https://opensource.org/licenses/MIT). 
 
 ## Credits
 
-Pompa is developed and maintained by [@rodrigoea](https://github.com/rodrigoea).
+~~Pompa is developed and maintained by [@rodrigoea](https://github.com/rodrigoea).~~ ChatGPT did it all.
