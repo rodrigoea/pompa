@@ -4,6 +4,7 @@ const path = require("path");
 const fs = require("fs-extra");
 const { execSync } = require("child_process");
 const readline = require("readline");
+const os = require("os");
 
 const commandMappings = {
   install: {
