@@ -60,7 +60,7 @@ function detectPackageManager() {
   } else if (fs.existsSync(path.join(currentDirectory, "package-lock.json"))) {
     return "npm";
   } else {
-    return null;
+    return "npm";
   }
 }
 
@@ -111,12 +111,6 @@ function remapCommand(command, packageManager) {
 
 function pompa(command) {
   const packageManager = detectPackageManager();
-
-  if (command === "init") {
-    const remappedCommand = remapCommand(command, packageManager);
-    runCommand(`${packageManager} ${remappedCommand}`);
-    return; // Exit the function after executing the "init" command
-  }
 
   if (packageManager === "yarn" && command === "install") {
     console.error('Error: "pompa install" command is not supported with Yarn.');
