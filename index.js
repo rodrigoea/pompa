@@ -36,7 +36,21 @@ const commandMappings = {
     npm: "test",
     pnpm: "test",
   },
-  // Add more command mappings as needed
+  init: {
+    yarn: "init",
+    npm: "init",
+    pnpm: "init",
+  },
+  dev: {
+    yarn: "dev",
+    npm: "run dev",
+    pnpm: "dev",
+  },
+  publish: {
+    yarn: "publish",
+    npm: "publish",
+    pnpm: "publish",
+  },
 };
 
 function detectPackageManager() {
