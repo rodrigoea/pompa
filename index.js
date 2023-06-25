@@ -6,13 +6,35 @@ const { execSync } = require("child_process");
 const readline = require("readline");
 
 const commandMappings = {
+  install: {
+    yarn: "add",
+    npm: "install",
+    pnpm: "add",
+  },
   add: {
     yarn: "add",
     npm: "install",
+    pnpm: "add",
   },
   remove: {
     yarn: "remove",
     npm: "uninstall",
+    pnpm: "remove",
+  },
+  start: {
+    yarn: "start",
+    npm: "start",
+    pnpm: "start",
+  },
+  build: {
+    yarn: "build",
+    npm: "run build",
+    pnpm: "build",
+  },
+  test: {
+    yarn: "test",
+    npm: "test",
+    pnpm: "test",
   },
   // Add more command mappings as needed
 };
